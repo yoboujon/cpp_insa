@@ -32,9 +32,10 @@ Point2D Point2D::operator+(const Point2D& other)
     return {this->_x + other._x, this->_y + other._y};
 }
 
-Point2D Point2D::operator*(int other)
+// Question : Doit-t-on réellement ajouter friend pour pouvoir faire une opération dans les deux sens avec Point2D ?
+Point2D operator*(int value, const Point2D& point)
 {
-    return {this->_x*other, this->_y*other};
+    return {point._x*value, point._y*value};
 }
 
 int main(void)
@@ -50,7 +51,7 @@ int main(void)
     Point2D A(1,2), B(3,4),C;
     C = A + B;
     C.Affiche();
-    C = A*5;
+    C = 5*A;
     C.Affiche();
     return 0;
 }

@@ -38,9 +38,9 @@ Point2D Point2D::operator+(const Point2D& other)
     return { this->_x + other._x, this->_y + other._y };
 }
 
-Point2D Point2D::operator*(int other)
+Point2D operator*(int value, const Point2D& point)
 {
-    return { this->_x * other, this->_y * other };
+    return {point._x*value, point._y*value};
 }
 
 Point3D::Point3D()
@@ -81,9 +81,29 @@ Point3D Point3D::operator+(const Point3D& other)
     return { this->_x + other._x, this->_y + other._y, this->_z + other._z };
 }
 
-Point3D Point3D::operator*(int left)
+Point3D Point3D::operator+(const Point2D& other)
 {
-    return { this->_x*left, this->_y*left , this->_z*left };
+    Point3D returnOther(other,0.0f);
+    return { this->_x + returnOther._x, this->_y + returnOther._y, this->_z + returnOther._z };
+}
+
+/*
+Point3D operator+(const Point2D& point2d, const Point3D& point3d)
+{
+    Point3D returnOther(point2d,0.0f);
+    return { point3d._x + returnOther._x, point3d._y + returnOther._y, point3d._z + returnOther._z };
+}
+*/
+
+Point3D operator*(int value, const Point3D& point)
+{
+    return { point._x*value, point._y*value , point._z*value };
+}
+
+// Dans les deux sens, un second operator* doit être crée.
+Point3D operator*(const Point3D& point, int value)
+{
+    return (value*point);
 }
 
 int main(void)
@@ -98,5 +118,8 @@ int main(void)
     auto pointE = pointB+pointD;
     pointE.Affiche();
     (pointD*3).Affiche();
+    std::cout << "Ajout d'un point2D (A, [2,3]) à un point3D (D, [1,1,1]) :" << std::endl;
+    auto superPoint = pointD+pointA;
+    superPoint.Affiche();
     return 0;
 }

@@ -10,7 +10,7 @@ class Point2D {
         void Saisie(float x, float y);
         void Affiche();
         Point2D operator+(const Point2D& other);
-        Point2D operator*(int left);
+        friend Point2D operator*(int value, const Point2D& point);
     protected:
         float _x,_y;
 };
