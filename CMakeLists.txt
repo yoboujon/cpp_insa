@@ -17,7 +17,7 @@ add_executable(${EXERCICE_TARGET} ${SOURCES_EXE})
 # TD
 file(GLOB SOURCES_TD "${PROJECT_SOURCE_DIR}/td/td${TD}/src/*.cpp")
 add_executable(${TD_TARGET} ${SOURCES_TD})
-target_include_directories(${TD_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/td/td${ETAPE}/include")
+target_include_directories(${TD_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/td/td${ETAPE}/include/")
 
 # Adding compilation option depending on the OS 
 if(MSVC)
