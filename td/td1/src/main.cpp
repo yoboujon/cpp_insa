@@ -3,23 +3,20 @@
 
 int main(void)
 {
-    Vector<int> coolVector;
-    std::cout << "Actual size:" << coolVector.Size() << "\tCapacity: " << coolVector.Capacity() << std::endl;
-    coolVector.Display();
-    coolVector.PushBack(123);
-    coolVector.Display();
-    std::cout << "Actual size:" << coolVector.Size() << "\tCapacity: " << coolVector.Capacity() << std::endl;
-    coolVector.PushBack(124);
-    coolVector.Display();
-    std::cout << "Actual size:" << coolVector.Size() << "\tCapacity: " << coolVector.Capacity() << std::endl;
-    coolVector.PushBack(125);
-    coolVector.Display();
-    std::cout << "Actual size:" << coolVector.Size() << "\tCapacity: " << coolVector.Capacity() << std::endl;
-    coolVector.PushBack(126);
-    coolVector.Display();
-    std::cout << "Actual size:" << coolVector.Size() << "\tCapacity: " << coolVector.Capacity() << std::endl;
+    Vector<int> intVector;
+    for(int i=0; i<6; i++)
+        intVector.PushBack(i);
+    std::cout << "Integer vector: " << intVector << std::endl;
 
-    Vector<float> anotherCoolVector(10,1.2);
-    anotherCoolVector.Display();
+    Vector<float> floatVector(10,1.2);
+    std::cout << "Float vector: " << floatVector << std::endl;
+
+    Vector<char> charVector(5);
+    std::cout << "Capacity of charVector:" << charVector.Capacity() << "\t Size of charVector: " << charVector.Size() << std::endl;
+    std::cin >> charVector;
+    std::cout << "char vector: " << charVector << std::endl;
     return 0;
 }
+
+// 1.2.1 : Les fonctions sont déclarées dans l'objet car elles sont amies. La définition de la fonction, elle, est en dehors de l'objet car elle a un accès aux valeurs privées via friend.
+// Nous surchargeons l'opérateur std::cout/std::cin, donc la fonction n'est pas une modification de l'opérateur <</>> de Vector, mais de std::ostream/std::istream. 
