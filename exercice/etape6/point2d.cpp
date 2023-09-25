@@ -60,3 +60,8 @@ Point2D operator*(int value, const Point2D& point)
 {
     return {point._x*value, point._y*value};
 }
+
+void friendFunction(Point2D& obj)
+{
+    std::cout << obj._x << std::endl;
+}

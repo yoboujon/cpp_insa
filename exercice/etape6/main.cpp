@@ -12,5 +12,6 @@ int main(void)
     Point2D pointC;
     std::cin >> pointC;
     std::cout << "pointC entered: " << pointC << std::endl;
+    friendFunction(pointA);
     return 0;
 }

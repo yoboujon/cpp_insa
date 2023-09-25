@@ -16,6 +16,7 @@ class Point2D {
         friend std::ostream& operator<<(std::ostream& stream, const Point2D& point);
         friend std::istream& operator>>(std::istream& stream, Point2D& point);
         friend Point2D operator*(int value, const Point2D& point);
+        friend void friendFunction(Point2D& obj);
     protected:
         float _x,_y;
 };
