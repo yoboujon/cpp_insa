@@ -21,6 +21,7 @@ public:
     friend std::istream& operator>>(std::istream& stream, Vector<Tfriend>& vec);
 
     Vector<T>& operator=(const Vector<T>& other);
+    Vector<T>& operator()(const Vector<T>& other);
 
 private:
     size_t _capacity;
@@ -83,6 +84,13 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& other)
         for (size_t i = 0; i < other._size; i++)
             this->_values[i] = other._values[i];
     }
+    return *this;
+}
+
+template <class T>
+Vector<T>& Vector<T>::operator()(const Vector<T>& other)
+{
+    *this = other;
     return *this;
 }
 

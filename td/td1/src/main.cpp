@@ -11,17 +11,18 @@ int main(void)
     Vector<float> floatVector(10,1.2);
     std::cout << "Float vector: " << floatVector << std::endl;
 
-    Vector<char> charVector(5);
-    std::cout << "Capacity of charVector:" << charVector.Capacity() << "\t Size of charVector: " << charVector.Size() << std::endl;
-    std::cin >> charVector;
-    std::cout << "char vector: " << charVector << std::endl;
+    auto charVector = new Vector<char>(5);
+    std::cout << "Capacity of charVector:" << charVector->Capacity() << "\t Size of charVector: " << charVector->Size() << std::endl;
+    std::cin >> *charVector;
+    std::cout << "char vector: " << *charVector << std::endl;
 
-    Vector<char> anotherVector = charVector;
-    std::cout << "char vector: " << charVector << std::endl;
+    Vector<char> anotherVector = *charVector;
+    std::cout << "char vector: " << anotherVector << std::endl;
+    delete charVector;
 
     Vector<char> copiedVector;
-    copiedVector = anotherVector;
-    std::cout << "char vector: " << charVector << std::endl;
+    copiedVector(anotherVector);
+    std::cout << "char vector: " << copiedVector << std::endl;
     return 0;
 }
 
