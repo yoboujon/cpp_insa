@@ -15,6 +15,13 @@ int main(void)
     std::cout << "Capacity of charVector:" << charVector.Capacity() << "\t Size of charVector: " << charVector.Size() << std::endl;
     std::cin >> charVector;
     std::cout << "char vector: " << charVector << std::endl;
+
+    Vector<char> anotherVector = charVector;
+    std::cout << "char vector: " << charVector << std::endl;
+
+    Vector<char> copiedVector;
+    copiedVector = anotherVector;
+    std::cout << "char vector: " << charVector << std::endl;
     return 0;
 }
 
