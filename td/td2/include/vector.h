@@ -19,10 +19,11 @@ public:
     friend std::ostream& operator<<(std::ostream& stream, const Vector<Tfriend>& vec);
     template <class Tfriend>
     friend std::istream& operator>>(std::istream& stream, Vector<Tfriend>& vec);
-
     Vector<T>& operator=(const Vector<T>& other);
     Vector<T>& operator()(const Vector<T>& other);
-    T operator[](const int indice);
+    T& operator[](const int indice);
+    Vector<T> operator+(const Vector<T>& other);
+    Vector<T>& operator+=(const Vector<T>& other);
 
 private:
     size_t _capacity;
@@ -141,12 +142,40 @@ std::istream& operator>>(std::istream& stream, Vector<T>& vec)
 }
 
 template <class T>
-T Vector<T>::operator[](const int indice)
+T& Vector<T>::operator[](const int indice)
 {
     if(indice > _size)
         throw "Indice from the vector is not reachable";
     else
         return _values[indice];
+}
+
+template <class T>
+Vector<T> Vector<T>::operator+(const Vector<T>& other)
+{
+    if(_size != other._size)
+        throw "Cannot add two vectors with different sizes together";
+    else
+    {
+        Vector<T> returnVector(_size);
+        returnVector._size = _size;
+        for(auto i =0; i < _size; i++)
+            returnVector._values[i] = _values[i] + other._values[i];
+        return returnVector;
+    }
+}
+
+template <class T>
+Vector<T>& Vector<T>::operator+=(const Vector<T>& other)
+{
+    if(_size != other._size)
+        throw "Cannot add two vectors with different sizes together";
+    else
+    {
+        for(auto i =0; i < _size; i++)
+            _values[i] += other._values[i];
+        return *this;
+    }
 }
 
 #endif // HEADER_VECTOR
