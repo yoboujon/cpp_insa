@@ -1,5 +1,5 @@
 echo off
-cmake --build build
+cmake --build build --target %1
 cd build/Debug
-cpp_insa.exe
+%1.exe
 cd ../..

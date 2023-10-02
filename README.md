@@ -34,6 +34,13 @@ Pour cela rendez vous à la racine du projet après avoir crée et préparer le 
 ./run.sh <target_name>
 ```
 _Pour GNU GCC/G++ sur Linux_
->`<target_name>` étant soit `td_insa` ou `exercice_insa`
 
-_le script Windows n'est plus fonctionnel pour le moment_
+```
+./run.bat <target_name>
+```
+_Pour Powershell sur Windows_
+```
+run.bat <target_name>
+```
+_Pour CMD sur Windows_
+>`<target_name>` étant soit `td_insa` ou `exercice_insa`
