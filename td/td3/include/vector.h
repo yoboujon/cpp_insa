@@ -25,7 +25,7 @@ public:
     Vector<T> operator+(const Vector<T>& other);
     Vector<T>& operator+=(const Vector<T>& other);
 
-private:
+protected:
     size_t _capacity;
     size_t _size;
     T* _values;
