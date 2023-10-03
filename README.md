@@ -44,3 +44,35 @@ run.bat <target_name>
 ```
 _Pour CMD sur Windows_
 >`<target_name>` étant soit `td_insa` ou `exercice_insa`
+
+## Test des allocations entre la bibliothèque standard et mon implémentation
+
+Voici le code testé :
+
+```cpp
+std::vector<int> vectStd;
+Vector<int> vectYoyo;
+int capacityStd(0), capacityYoyo(0);
+size_t tempCapacityStd(0), tempCapacityYoyo(0);
+for(int i=0; i<15000; i++)
+{
+    vectYoyo.PushBack(i);
+    vectStd.push_back(i);
+    if(tempCapacityStd != vectStd.capacity())
+        capacityStd++;
+    if(tempCapacityYoyo != vectYoyo.Capacity())
+        capacityYoyo++;
+    tempCapacityStd = vectStd.capacity();
+    tempCapacityYoyo = vectYoyo.Capacity();
+}
+std::cout << "Total Yoyo Reallocations: " << capacityYoyo << "\tFinal Capacity: " << tempCapacityYoyo << std::endl;
+std::cout << "Total Std Reallocations: " << capacityStd << "\tFinal Capacity: " << tempCapacityStd << std::endl;
+```
+
+Avec le résultat :
+
+```
+Total Yoyo Reallocations: 15    Final Capacity: 16384
+Total Std Reallocations: 25     Final Capacity: 18207
+```
+Mon implémentation possède donc moins de réallocations, ainsi qu'une capacité finale moins grande. (Par comparaison, une simple implémentation augmentant la capacité `_capacity++` à chaque `push_back()` aurait autant de réallocation que de capacité finale. Bien qu'une capacité finale moins élevée.)
