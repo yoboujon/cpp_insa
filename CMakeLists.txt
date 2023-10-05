@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 # Global Variables
 set(EXERCICE_TARGET exercice_insa)
 set(TD_TARGET td_insa)
+set(TP_TARGET tp_insa)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -18,6 +19,11 @@ add_executable(${EXERCICE_TARGET} ${SOURCES_EXE})
 file(GLOB SOURCES_TD "${PROJECT_SOURCE_DIR}/td/td${TD}/src/*.cpp")
 add_executable(${TD_TARGET} ${SOURCES_TD})
 target_include_directories(${TD_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/td/td${ETAPE}/include/")
+
+#TP
+file(GLOB SOURCES_TP "${PROJECT_SOURCE_DIR}/tp/src/*.cpp")
+add_executable(${TP_TARGET} ${SOURCES_TP})
+target_include_directories(${TP_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/tp/include")
 
 # Adding compilation option depending on the OS 
 if(MSVC)

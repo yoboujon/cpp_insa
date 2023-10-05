@@ -14,7 +14,7 @@ cd build
 ```
 cmake -DETAPE=2 -DTD=1 ..
 ```
-_Dans cet exemple, l'étape 2 et le td 1 seront construits._
+_Dans cet exemple, l'étape 2 et le td 1 seront construits. Le tp lui n'a pas besoin de nombre particulier._
 
 ### Lancer la compilation
 
@@ -23,7 +23,7 @@ Il suffit ensuite de construire l'executable dans le dossier désiré
 ```
 cmake --build . --target <target_name>
 ```
->`<target_name>` étant soit `td_insa` ou `exercice_insa`
+>`<target_name>` étant soit `td_insa`, `exercice_insa` ou `tp_insa`
 
 ## Conseil pour compiler et executer efficacement
 
@@ -43,7 +43,7 @@ _Pour Powershell sur Windows_
 run.bat <target_name>
 ```
 _Pour CMD sur Windows_
->`<target_name>` étant soit `td_insa` ou `exercice_insa`
+>`<target_name>` étant soit `td_insa`, `exercice_insa` ou `tp_insa`
 
 ## Test des allocations entre la bibliothèque standard et mon implémentation
 
