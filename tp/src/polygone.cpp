@@ -26,26 +26,31 @@ Rectangle::Rectangle(uint hauteur, uint longueur)
 
 std::string Rectangle::afficherCaracteristiques()
 {
-    return std::string("Nombre de cotes : 4\tPerimetre :"+std::to_string(perimetre()));
+    return Polygone::afficherCaracteristiques()+std::string("\tPerimetre :"+std::to_string(perimetre()));
 }
 
 int Rectangle::perimetre()
 {
-    return _longueur * _hauteur;
+    return (2*_longueur)+(2*_hauteur);
 }
 
 Carre::Carre(uint cote)
-    : Polygone(4)
+    : Rectangle(cote, cote)
+{
+}
+
+TriangleEquilateral::TriangleEquilateral(uint cote)
+    : Polygone(3)
     , _cote(cote)
+    , _angle(60.0f)
+{}
+
+std::string TriangleEquilateral::afficherCaracteristiques()
 {
+    return Polygone::afficherCaracteristiques()+std::string("\tPerimetre :"+std::to_string(perimetre())+"\t Angles :"+std::to_string(_angle));   
 }
 
-std::string Carre::afficherCaracteristiques()
+int TriangleEquilateral::perimetre()
 {
-    return std::string("Nombre de cotes : 4\tPerimetre :"+std::to_string(perimetre()));
-}
-
-int Carre::perimetre()
-{
-    return _cote * _cote;
+    return 3*_cote;
 }

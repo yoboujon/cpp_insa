@@ -20,17 +20,24 @@ public:
     virtual std::string afficherCaracteristiques() override;
     virtual int perimetre() override;
 
-private:
+protected:
     uint _hauteur, _longueur;
 };
 
-class Carre : public Polygone {
+class Carre : public Rectangle {
 public:
     Carre(uint cote);
+};
+
+class TriangleEquilateral : public Polygone
+{
+public:
+    TriangleEquilateral(uint cote);
     virtual std::string afficherCaracteristiques() override;
     virtual int perimetre() override;
 private:
     uint _cote;
+    float _angle;
 };
 
 #endif // HEADER_POLYGONE

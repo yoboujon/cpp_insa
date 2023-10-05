@@ -9,4 +9,6 @@ int main(void)
     std::cout << rect.afficherCaracteristiques() << std::endl;
     Carre car(2);
     std::cout << car.afficherCaracteristiques() << std::endl;
+    TriangleEquilateral tri(5);
+    std::cout << tri.afficherCaracteristiques() << std::endl;
 }
