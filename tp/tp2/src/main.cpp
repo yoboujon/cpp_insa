@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstddef>
 #include <iostream>
 #include <iterator>
@@ -11,6 +12,7 @@ void question1(const uint maxVec);
 void question2(const uint max);
 void question3();
 void question4();
+void question5();
 
 int main(void)
 {
@@ -18,7 +20,21 @@ int main(void)
     question2(10);
     question3();
     question4();
+    question5();
     return 0;
+}
+
+void question5()
+{
+    std::vector<std::string> dico = {"Orange", "Girafe", "Piano", "Lion", "Ballon"};
+    for(const auto& mot : dico)
+        std::cout << mot << "\t";
+    std::cout << "\n";
+    // tri
+    std::sort(dico.begin(),dico.end());
+    for(const auto& mot : dico)
+        std::cout << mot << "\t";
+    std::cout << "\n";
 }
 
 void question4()
