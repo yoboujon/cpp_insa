@@ -1,18 +1,33 @@
 #include <cstddef>
 #include <iostream>
 #include <iterator>
+#include <set>
 #include <sys/types.h>
 #include <vector>
 #include <list>
 
 void question1(const uint maxVec);
 void question2(const uint max);
+void question3();
 
 int main(void)
 {
     question1(10);
     question2(10);
+    question3();
     return 0;
+}
+
+void question3()
+{
+    std::set<std::string> eleves = {"Boujon","Soler","Dubois","Dupont","Paris","Muller","Sanchez"};
+    for(const auto& nom : eleves)
+        std::cout << nom << "\t";
+    std::cout << std::endl;
+    eleves.erase(eleves.begin(),std::next(eleves.begin(),2));
+    for(const auto& nom : eleves)
+        std::cout << nom << "\t";
+    std::cout << std::endl;
 }
 
 void question2(const uint max)
