@@ -1,13 +1,37 @@
+#include "../include/file.h"
 #include "../include/polygone.h"
 #include <cstddef>
 #include <iostream>
+#include <typeinfo>
 
 /**
  * @brief Fonction de test utilisées pour les question 1 à 5
  */
 void test();
+/**
+ * @brief Fonction pour l'exo 1
+ */
+void exo1();
 
 int main(void)
+{
+    File<Polygone*> polyFile;
+    polyFile.push_back(new Carre(2));
+    polyFile.push_back(new Cercle(5, "rouge"));
+    polyFile.push_back(new TriangleEquilateral(3));
+    for (size_t i = 0; i < polyFile.getSize(); i++) {
+        std::cout << polyFile[i]->afficherCaracteristiques() << "\n";
+        std::cout << "Perimetre: " << polyFile[i]->perimetre() << "\n";
+        // ! Expression with side effect (clang-tidy)
+        if (typeid(*polyFile[i]) == typeid(Cercle)) {
+            auto cercle = static_cast<Cercle*>(polyFile[i]);
+            std::cout << "Couleur du cercle: " << cercle->getCouleur() << std::endl;
+        }
+        std::cout << "\n";
+    }
+}
+
+void exo1()
 {
     // Le polymorphisme ne fonctionne qu'avec des pointeurs
     Polygone* polyTab[3] = { new Carre(2), new Cercle(5, "rouge"), new TriangleEquilateral(3) };
@@ -23,8 +47,7 @@ int main(void)
     // Suppression de chaque Polygone dans le tableau
     while (Polygone::getPolyCount() > 0)
         delete polyTab[Polygone::getPolyCount() - 1];
-    // ! WARNING: Potential memory leak (je ne sais pas pourquoi...)
-    return 0;
+    // ! Potential memory leak (clang-tidy)
 }
 
 void test()

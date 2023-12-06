@@ -1,5 +1,5 @@
 #include "../include/polygone.h"
-#include "coloriable.h"
+#include "../include/coloriable.h"
 
 #include <cmath>
 #include <sys/types.h>
