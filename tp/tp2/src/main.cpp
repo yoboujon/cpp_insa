@@ -5,17 +5,45 @@
 #include <sys/types.h>
 #include <vector>
 #include <list>
+#include <map>
 
 void question1(const uint maxVec);
 void question2(const uint max);
 void question3();
+void question4();
 
 int main(void)
 {
     question1(10);
     question2(10);
     question3();
+    question4();
     return 0;
+}
+
+void question4()
+{
+    std::map<std::string,uint> contacts = {
+        {"Boujon", 781930616},
+        {"Soler", 593457861},
+        {"Paris", 635861042},
+        {"Muller", 512104809},
+        {"Sanchez", 695614801},
+        {"Dubois", 745102647},
+        {"Dupont", 597153486}
+    };
+    for(const auto& c : contacts)
+        std::cout << "Nom: " << c.first << "\tNuméro: " << c.second << "\n";
+    for(auto it=contacts.begin() ; it != contacts.end();)
+    {
+        if (it->second >= 500000000 && it->second < 600000000)
+            it = contacts.erase(it);
+        else
+            it++;
+    }
+    std::cout << "\nAprès\n";
+    for(const auto& c : contacts)
+        std::cout << "Nom: " << c.first << "\tNuméro: " << c.second << "\n";
 }
 
 void question3()
