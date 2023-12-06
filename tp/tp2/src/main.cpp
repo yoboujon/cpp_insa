@@ -13,6 +13,7 @@ void question2(const uint max);
 void question3();
 void question4();
 void question5();
+void question6();
 
 int main(void)
 {
@@ -21,7 +22,18 @@ int main(void)
     question3();
     question4();
     question5();
+    question6();
     return 0;
+}
+
+void question6()
+{
+    std::list<std::string> phrase = {"il","fait","beau"};
+    auto it = std::find(phrase.begin(),phrase.end(),"beau");
+    phrase.emplace(it, "très");
+    for(const auto& mot : phrase)
+        std::cout << mot << " ";
+    std::cout << "\n";
 }
 
 void question5()
