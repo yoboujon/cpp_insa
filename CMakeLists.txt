@@ -10,6 +10,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Set the etape value
 set(ETAPE "1" CACHE STRING "Entrez l'exercice a compiler.")
 set(TD "1" CACHE STRING "Entrez le td a compiler.")
+set(TP "1" CACHE STRING "Entrez le td a compiler.")
 
 # Etapes exercice
 file(GLOB SOURCES_EXE "${PROJECT_SOURCE_DIR}/exercice/etape${ETAPE}/*.cpp")
@@ -18,12 +19,12 @@ add_executable(${EXERCICE_TARGET} ${SOURCES_EXE})
 # TD
 file(GLOB SOURCES_TD "${PROJECT_SOURCE_DIR}/td/td${TD}/src/*.cpp")
 add_executable(${TD_TARGET} ${SOURCES_TD})
-target_include_directories(${TD_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/td/td${ETAPE}/include/")
+target_include_directories(${TD_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/td/td${TD}/include/")
 
 #TP
-file(GLOB SOURCES_TP "${PROJECT_SOURCE_DIR}/tp/src/*.cpp")
+file(GLOB SOURCES_TP "${PROJECT_SOURCE_DIR}/tp/tp${TP}/src/*.cpp")
 add_executable(${TP_TARGET} ${SOURCES_TP})
-target_include_directories(${TP_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/tp/include")
+target_include_directories(${TP_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/tp/tp${TP}/include")
 
 # Adding compilation option depending on the OS 
 if(MSVC)

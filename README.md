@@ -12,9 +12,9 @@ mkdir build
 cd build
 ```
 ```
-cmake -DETAPE=2 -DTD=1 ..
+cmake -DETAPE=2 -DTD=1 -DTP=1 ..
 ```
-_Dans cet exemple, l'étape 2 et le td 1 seront construits. Le tp lui n'a pas besoin de nombre particulier._
+_Dans cet exemple, l'étape 2 du dossier exercice, le td 1 du dossier td et le tp 1 du dossier tp seront construits._
 
 ### Lancer la compilation
 
