@@ -5,7 +5,7 @@
 
 class Figure {
     public:
-        virtual int perimetre()=0;
+        virtual float perimetre()=0;
         virtual std::string afficherCaracteristiques()=0;
 };
 
