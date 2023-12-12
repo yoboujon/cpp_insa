@@ -7,6 +7,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include "../include/partie2.h"
 
 void question1(const uint maxVec);
 void question2(const uint max);
@@ -23,6 +24,29 @@ int main(void)
     question4();
     question5();
     question6();
+
+    // Partie2
+    MatriceCreuse m(5,5,{{0,2},{0,1}},2);
+    std::cout << m;
+    std::cout << m(0,2) << std::endl;
+    std::cout << m[{0,5}] << std::endl;
+    m(0,0) = 5;
+    std::cout << m << std::endl;
+    auto m2 = m+5;
+    std::cout << m2 << std::endl;
+    std::cout << m+m2 << std::endl;
+    std::cout << m2-m << std::endl;
+    MatriceCreuse m3(3,4,{{2,2}},5);
+    try {
+        std::cout << m+m3;
+    }
+    catch(const char* err)
+    {
+        std::cerr << err << std::endl;
+    }
+    std::cout << m << std::endl;
+    m+=1;
+    std::cout << m;
     return 0;
 }
 
